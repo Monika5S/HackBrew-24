@@ -1,0 +1,265 @@
+*,
+*::before,
+*::after {
+    font-family: 'Open Sans', sans-serif;
+    user-select: none;
+    margin: 0;
+}
+
+body {
+    margin: 0;
+}
+
+nav {
+    background: var(--v1);
+    text-align: center;
+    display: flex;
+    padding: 10px 20px;
+    font-size: 12px;
+    font-weight: lighter;
+    column-gap: 10px;
+    align-items: center;
+    justify-content: end;
+}
+
+a {
+    text-decoration: none;
+    color: azure;
+}
+
+button {
+    padding: 10px;
+    margin: 5px;
+    background: var(--v1);
+    color: azure;
+    border: none;
+    border-radius: 4px;
+}
+
+.title {
+    position: absolute;
+    bottom: 50%;
+    left: 40%;
+    font-size: 9vmin;
+    z-index: 100;
+    color: white;
+    margin: 0;
+    opacity: 0.5;
+    text-shadow: 0 0 5px hsl(0, 0%, 0%, .5);
+}
+
+:root {
+    --v1: #590982;
+    --v2: #8a65cc;
+    --v3: #5e4f89;
+    --transparentv3: #5e30d900;
+    --v4: #34235e;
+    --s1: #614945d3;
+}
+
+.landscape *,
+.landscape *:after,
+.landscape *:before {
+    position: absolute;
+}
+
+.landscape {
+    height: 100vh;
+    background-image: linear-gradient(var(--v1), var(--s1), var(--v1));
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.mountain {
+    border-radius: 180% 80% 0% 0%/60vmin 60vmin 0% 0%;
+    width: 40vmin;
+    height: 30vmin;
+    bottom: 50%;
+    left: -10vmin;
+    background: var(--s1);
+    background-image: linear-gradient(var(--v1), var(--v2) 30%, var(--v3));
+
+}
+
+.mountain:before {
+    content: "";
+    bottom: 0;
+    width: inherit;
+    height: inherit;
+    background: inherit;
+    border-radius: inherit;
+    transform-origin: bottom center;
+    transform: scaleX(1) scaleY(-0.6);
+    filter: blur(3px);
+}
+
+.mountain-2 {
+    left: 5vmin;
+    height: 15vmin;
+    width: 40vmin;
+    border-radius: 120% 50% 0% 0%/25vmin 25vmin 0% 0%;
+    background-image: linear-gradient(var(--v3), var(--v4));
+}
+
+.mountain-3 {
+    border-radius: 100% 0 100% 0;
+    right: -85vmin;
+    width: 100vmin;
+    left: auto;
+    height: 12vmin;
+    color: var(--v3);
+    background-image: linear-gradient(var(--s1), var(--v4));
+}
+
+.lotus {
+    width: 10vmin;
+    height: 5vmin;
+    background: conic-gradient(var(--v3) 0deg 40deg, var(--transparentv3) 50deg 70deg, var(--v3) 80deg);
+    border-radius: 50%;
+}
+
+.lotus-1 {
+    bottom: 10vmin;
+    right: 5vmin;
+    width: 20vmin;
+}
+
+.lotus-2 {
+    bottom: 20vmin;
+    right: 15vmin;
+    height: 3vmin;
+}
+
+.lotus-3 {
+    bottom: 10vmin;
+    right: 35vmin;
+    transform: rotate(180deg);
+    opacity: 0.8;
+    width: 15vmin;
+}
+
+.water {
+    top: 50%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(#fea79855, var(--v2));
+    overflow: hidden;
+    box-shadow: inset 0 1px 4px -3px white;
+}
+
+.front {
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.stone {
+    bottom: -5vh;
+    left: 0;
+    height: 20vmin;
+    width: 40vmin;
+    background: var(--v4);
+    box-shadow: inset 0 0 20px -5px rgba(0, 0, 0, 0.2);
+    border-radius: 0% 100% 0 0;
+    border-right: 80px solid var(--v3);
+}
+
+.splash {
+    width: 8vmin;
+    height: 3vmin;
+    border: 2px solid var(--s1);
+    box-shadow: 0 0 2px var(--s1);
+    border-radius: 50%;
+    bottom: 5vmin;
+    left: 70%;
+    animation: splash 9s infinite;
+    transform: scale(0);
+}
+
+.splash-stone {
+    bottom: 15vh;
+    left: -3vmin;
+    height: 10vmin;
+    width: 30vmin;
+}
+
+
+.splash-4 {
+    bottom: 5vmin;
+    left: auto;
+    bottom: 15vmin;
+    right: -2vmin;
+}
+
+@keyframes splash {
+
+    50%,
+    100% {
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+.lantern {
+    position: absolute;
+    width: 10vh;
+    height: 10vh;
+    bottom: 200px;
+    left: 0;
+    z-index: 1;
+    opacity: 0.7;
+    background: linear-gradient(antiquewhite, rgb(255, 255, 203), rgba(244, 244, 14, 0.789));
+    box-shadow: 0 -3px 8px rgb(215, 223, 253);
+    border-radius: 30% 30% 10% 10%;
+    border-bottom: 5px solid rgb(44, 74, 87);
+}
+
+.goal-1 {
+    left: 50%;
+    bottom: 30%;
+}
+
+.goal-2 {
+    left: 70%;
+    bottom: 47%;
+}
+
+.goal-3 {
+    left: 85%;
+    bottom: 28%;
+    background: linear-gradient(rgb(176, 245, 209), rgb(255, 255, 203), rgba(14, 152, 244, 0.789));
+}
+
+.goal-4 {
+    left: 30%;
+    bottom: 35%;
+    background: linear-gradient(rgb(176, 183, 245), rgb(255, 255, 203), rgba(133, 18, 215, 0.789));
+}
+
+.goal-5 {
+    left: 10%;
+    bottom: 45%;
+}
+
+.goal-1,
+.goal-2,
+.goal-3,
+.goal-4,
+.goal-5 {
+    display: none;
+}
+
+.footer {
+    position: fixed;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
