@@ -23,9 +23,16 @@ body {
     background-color: var(--v2);
 }
 
-.col {
-    width: 150px;
-    height: 150px;
+.row {
     border: 2px solid var(--v4);
+    background-color: #34235e;
+    border-radius: 4px;
+    color: azure;
+    padding: 20px;
+}
+
+.col {
+    /* width: 150px;
+    height: 150px; */
     margin: 10px;
 }
