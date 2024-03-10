@@ -1,15 +1,60 @@
-function setGoal() {
-  count += 1;
-  let goal = prompt("write your First Goal");
-  goals[`goal-${count}`] = goal;
+function removeGoal(event) {
+  event.target.parentNode.remove();
+  count -= 1;
+  console.log(count);
+}
+
+function litAlantern() {
   let lantern = document.querySelector(`.goal-${count}`);
   lantern.style.display = "block";
+}
+
+function updateGoalList() {
+  let goals_list = document.querySelector(".goals-list");
+  let el = document.createElement("div");
+  el.classList.add("goal");
+  el.innerHTML = `
+        <h4>🏮 ${goals[count]}</h4>
+      `;
+
+  let bt = document.createElement("button");
+  bt.classList.add("acheived");
+  bt.innerHTML = "Acheived 🎯";
+  bt.addEventListener("click", removeGoal);
+  el.appendChild(bt);
+
+  goals_list.append(el);
+}
+
+function setGoal() {
+  count += 1;
+  if (count > 5) {
+    alert("⚡You can add max 5 goals!⚡");
+    return;
+  }
+
+  let inputElement = document.querySelector("input");
+  goals[count] = inputElement.value;
+  litAlantern();
+  updateGoalList();
+
+  inputElement.value = "";
+  console.log(count);
+}
+
+function closeList(event) {
+  event.target.parentNode.style.display = "none";
 }
 
 var goals = {},
   count = 0;
 
-add_button = document.querySelector(".add");
-add_button.addEventListener("click", setGoal);
-remove_button = document.querySelector(".remove");
-remove_button.addEventListener("click", removeGoal);
+let goal_ele = document.querySelector(".add-goal");
+goal_ele.addEventListener("click", setGoal);
+
+let view_ele = document.querySelector(".view");
+view_ele.addEventListener("click", () => {
+  document.querySelector(".goals-list").style.display = "block";
+});
+
+document.querySelector(".close").addEventListener("click", closeList);
