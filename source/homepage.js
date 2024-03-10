@@ -1,7 +1,7 @@
 function removeGoal(event) {
   event.target.parentNode.remove();
+  // console.log(count);
   count -= 1;
-  console.log(count);
 }
 
 function litAlantern() {
@@ -27,19 +27,19 @@ function updateGoalList() {
 }
 
 function setGoal() {
-  count += 1;
-  if (count > 5) {
+  if (count >= 5) {
     alert("⚡You can add max 5 goals!⚡");
     return;
   }
 
   let inputElement = document.querySelector("input");
+  count += 1;
   goals[count] = inputElement.value;
   litAlantern();
   updateGoalList();
-
   inputElement.value = "";
-  console.log(count);
+
+  // console.log(count);
 }
 
 function closeList(event) {
