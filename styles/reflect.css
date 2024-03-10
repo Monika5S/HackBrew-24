@@ -1,0 +1,31 @@
+html {
+    height: 100%;
+}
+
+:root {
+    --v1: #590982;
+    --v2: #8a65cc;
+    --v3: #5e4f89;
+    --transparentv3: #5e30d900;
+    --v4: #34235e;
+    --s1: #614945d3;
+}
+
+body {
+    background-image: linear-gradient(var(--v1), var(--s1), var(--v1));
+}
+
+.container {
+    padding: 60px;
+}
+
+.reflect {
+    background-color: var(--v2);
+}
+
+.col {
+    width: 150px;
+    height: 150px;
+    border: 2px solid var(--v4);
+    margin: 10px;
+}
