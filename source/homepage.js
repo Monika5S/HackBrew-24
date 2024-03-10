@@ -1,5 +1,7 @@
 function removeGoal(event) {
   event.target.parentNode.remove();
+  let lantern = document.querySelector(`.goal-${count}`);
+  lantern.style.display = "none";
   // console.log(count);
   count -= 1;
 }
