@@ -8,6 +8,8 @@ import {
   collection,
   addDoc,
   getDocs,
+  doc,
+  deleteDoc,
 } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -24,4 +26,13 @@ const auth = getAuth(app);
 const firestore = getFirestore(app);
 const provider = new GoogleAuthProvider();
 
-export { auth, firestore, provider, collection, addDoc, getDocs };
+export {
+  auth,
+  firestore,
+  provider,
+  collection,
+  addDoc,
+  getDocs,
+  doc,
+  deleteDoc,
+};

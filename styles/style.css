@@ -49,6 +49,11 @@ button {
     border-radius: 4px;
 }
 
+#auth-container button {
+    border: 2px solid var(--v2);
+    box-shadow: 1px 1px 2px rgb(168, 131, 255);
+}
+
 input,
 select {
     padding: 8px 15px;
@@ -263,7 +268,7 @@ select {
     display: none;
 }
 
-.goals-list {
+.goals-list-wrapper {
     background: var(--v2);
     position: absolute;
     top: 30%;
@@ -276,7 +281,7 @@ select {
     display: none;
 }
 
-.goals-list .close {
+.goals-list-wrapper .close {
     background-color: var(--v3);
     margin-left: 40%;
     border-radius: 50%;
