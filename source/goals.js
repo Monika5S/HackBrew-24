@@ -4,7 +4,7 @@ import {
   collection,
   addDoc,
   getDocs,
-} from "./firebaseConfig.js";
+} from "./firebase/firebaseConfig.js";
 
 function removeGoal(event) {
   event.target.parentNode.remove();

@@ -18,13 +18,12 @@
     <nav>
       <a href="./reflect/index.html">Community Reflection💜</a>
       <a href="/motivation/index.html">Little Light🌟</a>
-
+      <a href="profile.html" id="profile-link" style="display: none"
+        >🌞My Profile</a
+      >
       <div id="auth-container">
         <button id="sign-in-button">Sign In with Google</button>
         <button id="sign-out-button" style="display: none">Sign Out</button>
-        <a href="profile.html" id="profile-link" style="display: none"
-          >🌞My Profile</a
-        >
       </div>
     </nav>
 
@@ -71,6 +70,6 @@
     </div>
   </body>
   <script type="module" src="source/firebase/firebaseConfig.js"></script>
-  <!-- <script type="module" src="source/auth.js"></script> -->
+  <script type="module" src="source/firebase/auth.js"></script>
   <script type="module" src="source/goals.js"></script>
 </html>
