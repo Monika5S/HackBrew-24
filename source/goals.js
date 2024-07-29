@@ -1,3 +1,11 @@
+import {
+  auth,
+  firestore,
+  collection,
+  addDoc,
+  getDocs,
+} from "./firebaseConfig.js";
+
 function removeGoal(event) {
   event.target.parentNode.remove();
   let lantern = document.querySelector(`.goal-${count}`);
