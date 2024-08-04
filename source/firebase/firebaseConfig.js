@@ -2,6 +2,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/fireba
 import {
   getAuth,
   GoogleAuthProvider,
+  setPersistence,
+  browserLocalPersistence,
 } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
 import {
   getFirestore,
@@ -13,12 +15,12 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyD72Ui-9O9qb1OhX3rgktbGVgqeb70BIds",
-  authDomain: "litalamp-98a3d.firebaseapp.com",
-  projectId: "litalamp-98a3d",
-  storageBucket: "litalamp-98a3d.appspot.com",
-  messagingSenderId: "189443806144",
-  appId: "1:189443806144:web:79ceba1ee1709448c0ae25",
+  apiKey: "AIzaSyBD5vp6DUGuFNwe9Lc4QKB82OTmx74HJ_Q",
+  authDomain: "my-app-12490.firebaseapp.com",
+  projectId: "my-app-12490",
+  storageBucket: "my-app-12490.appspot.com",
+  messagingSenderId: "89300345223",
+  appId: "1:89300345223:web:7470a1f09b5a458fd6f322",
 };
 
 const app = initializeApp(firebaseConfig);
@@ -35,4 +37,6 @@ export {
   getDocs,
   doc,
   deleteDoc,
+  setPersistence,
+  browserLocalPersistence,
 };

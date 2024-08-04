@@ -13,14 +13,34 @@
       <a href="./index.html" id="indx-link">🏡Home</a>
     </nav>
 
-    <h1>User Profile</h1>
-    <div id="user-info">
-      <img id="user-photo" src="" alt="User Photo" />
-      <p id="user-name"></p>
+    <div class="landscape">
+      <div class="mountain"></div>
+      <div class="mountain mountain-2"></div>
+      <div class="mountain mountain-3"></div>
+
+      <div class="water"></div>
+
+      <div class="splash"></div>
+      <div class="splash splash-stone splash-4"></div>
+      <div class="splash splash-stone"></div>
+      <div class="lotus lotus-1"></div>
+      <div class="lotus lotus-2"></div>
+      <div class="lotus lotus-3"></div>
+
+      <div class="front">
+        <div class="stone"></div>
+      </div>
     </div>
 
-    <script type="module" src="source/firebase/firebaseConfig.js"></script>
-    <script type="module" src="source/firebase/auth.js"></script>
-    <script type="module" src="source/profile.js"></script>
+    <div class="profile-wrapper">
+      <h1>User Profile</h1>
+
+      <div id="profile">
+        <img id="user-photo" src="" alt="User Photo" />
+        <h2 id="user-name"></h2>
+        <h4 id="user-email"></h4>
+      </div>
+    </div>
+    <script type="module" src="./source/profile.js"></script>
   </body>
 </html>

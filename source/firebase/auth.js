@@ -1,16 +1,21 @@
-import { auth, provider } from "./firebaseConfig.js";
+import {
+  auth,
+  provider,
+  setPersistence,
+  browserLocalPersistence,
+} from "./firebaseConfig.js";
 import {
   signInWithPopup,
   signOut,
-  setPersistence,
-  browserLocalPersistence,
+  onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
 
 const signInButton = document.getElementById("sign-in-button");
 const signOutButton = document.getElementById("sign-out-button");
 const profileLink = document.getElementById("profile-link");
 
-signInButton.addEventListener("click", async () => {
+async function handleSignIn(event) {
+  event.preventDefault();
   try {
     await setPersistence(auth, browserLocalPersistence);
     await signInWithPopup(auth, provider);
@@ -18,16 +23,18 @@ signInButton.addEventListener("click", async () => {
   } catch (error) {
     console.error("Error signing in: ", error);
   }
-});
+}
 
-signOutButton.addEventListener("click", async () => {
+async function handleSignOut(event) {
+  event.preventDefault();
   try {
     await signOut(auth);
     updateUI();
+    window.location.href = "index.html";
   } catch (error) {
     console.error("Error signing out: ", error);
   }
-});
+}
 
 function updateUI() {
   const user = auth.currentUser;
@@ -40,8 +47,24 @@ function updateUI() {
     signInButton.style.display = "block";
     signOutButton.style.display = "none";
     profileLink.style.display = "none";
+
+    // Clear goals list only if it's on the current page
+    const goalsList = document.querySelector(".goals-list");
+    if (goalsList) {
+      goalsList.innerHTML = "";
+    }
   }
 }
 
-// Initial UI update
-updateUI();
+onAuthStateChanged(auth, (user) => {
+  updateUI();
+  if (!user && window.location.pathname !== "/index.html") {
+    window.location.href = "index.html"; // Redirect to login if not authenticated
+  }
+});
+
+//for ui update on page load
+window.addEventListener("DOMContentLoaded", updateUI);
+
+signInButton.addEventListener("click", handleSignIn);
+signOutButton.addEventListener("click", handleSignOut);

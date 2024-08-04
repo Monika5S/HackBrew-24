@@ -8,51 +8,40 @@ import {
   deleteDoc,
 } from "./firebase/firebaseConfig.js";
 
-async function removeGoal(goalId) {
-  if (auth.currentUser) {
-    const goalRef = doc(
-      firestore,
-      "users",
-      auth.currentUser.uid,
-      "goals",
-      goalId
-    );
-    await deleteDoc(goalRef);
+//to hide all lanterns
+function hideAllLanterns() {
+  for (let i = 1; i <= 5; i++) {
+    document.querySelector(`.lantern.goal-${i}`).style.display = "none";
   }
-
-  let lantern = document.querySelector(`.goal-${count}`);
-  lantern.style.display = "none";
-  count -= 1;
-  displayGoalList();
 }
 
-function litAlantern() {
-  let lantern = document.querySelector(`.goal-${count}`);
-  lantern.style.display = "block";
+//to show a specific lantern
+function showLantern(index) {
+  document.querySelector(`.lantern.goal-${index}`).style.display = "block";
 }
 
+//to update the goal list and lanterns
 async function displayGoalList() {
   const user = auth.currentUser;
   if (user) {
     let goals_list = document.querySelector(".goals-list");
     goals_list.innerHTML = "";
+
+    hideAllLanterns();
+
     try {
       const goalsStorage = await getDocs(
         collection(firestore, "users", user.uid, "goals")
       );
 
+      let count = 0; //to track the number of goals
       goalsStorage.forEach((doc) => {
         const goal = doc.data().goal;
 
-        let goal_element = document.createElement("div");
-        goal_element.classList.add("goal");
-        goal_element.innerHTML = `<h4>🏮 ${goal} </h4>`;
-        let bt = document.createElement("button");
-        bt.classList.add("acheived");
-        bt.innerHTML = "Acheived 🎯";
-        bt.addEventListener("click", () => removeGoal(doc.id)); //doc.id to get refrenece of particular goal
-        goal_element.appendChild(bt);
-        goals_list.append(goal_element);
+        goals_list.appendChild(createGoalElement(doc.id, goal));
+        showLantern(count + 1);
+
+        count++;
       });
     } catch (error) {
       console.error("Error fetching goals: ", error);
@@ -60,16 +49,30 @@ async function displayGoalList() {
   }
 }
 
+function createGoalElement(goalId, goalText) {
+  const goal_element = document.createElement("div");
+  goal_element.classList.add("goal");
+  goal_element.innerHTML = `<h4>🏮 ${goalText} </h4>`;
+
+  const button = document.createElement("button");
+  button.classList.add("achieved");
+  button.innerHTML = "Achieved 🎯";
+  button.addEventListener("click", () => removeGoal(goalId));
+
+  goal_element.appendChild(button);
+  return goal_element;
+}
+
+//function to add a goal to firestore
 async function setGoal() {
   const user = auth.currentUser;
   if (user) {
-    console.log(count);
-    if (count == 5) {
-      alert("⚡You can add max 5 goals!⚡");
+    if (document.querySelectorAll(".goal").length >= 5) {
+      alert("⚡You can add a maximum of 5 goals!⚡");
       return;
     }
 
-    let goalInput = document.querySelector("input");
+    const goalInput = document.querySelector("input");
     const goal = goalInput.value;
     if (goal) {
       try {
@@ -77,11 +80,6 @@ async function setGoal() {
           goal,
         });
         goalInput.value = "";
-
-        //increase counter
-        count += 1;
-        litAlantern();
-
         displayGoalList();
       } catch (error) {
         console.error("Error adding goal: ", error);
@@ -92,21 +90,39 @@ async function setGoal() {
   }
 }
 
+async function removeGoal(goalId) {
+  const user = auth.currentUser;
+  if (user) {
+    try {
+      await deleteDoc(doc(firestore, "users", user.uid, "goals", goalId));
+      displayGoalList();
+    } catch (error) {
+      console.error("Error removing goal: ", error);
+    }
+  }
+}
+
 function closeList(event) {
   event.target.parentNode.style.display = "none";
 }
 
-var count = 0;
-//display list only if user is signed in
+document.querySelector(".add-goal").addEventListener("click", setGoal);
 
-let goal_ele = document.querySelector(".add-goal");
-goal_ele.addEventListener("click", setGoal);
-
-let view_ele = document.querySelector(".view");
-
-displayGoalList();
-view_ele.addEventListener("click", () => {
+document.querySelector(".view").addEventListener("click", () => {
   document.querySelector(".goals-list-wrapper").style.display = "block";
 });
 
 document.querySelector(".close").addEventListener("click", closeList);
+
+//if user not authenticated redirecting them to homepage
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    displayGoalList();
+  }
+  if (!user && window.location.pathname !== "/index.html") {
+    window.location.href = "index.html"; // Redirect to login if not authenticated
+  }
+});
+
+//to show previous and current goals on page load
+window.addEventListener("DOMContentLoaded", displayGoalList);
