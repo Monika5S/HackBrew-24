@@ -1,6 +1,6 @@
-# Lit A Lamp Web-App 🌟
+# Focus Lamp Web-App 🌟
 
-Welcome to Lit A Lamp web-app! 
+Welcome to Focus Lamp web-app! 
 A community-space where one can manage their goals using an engaging lamp theme, share their story, connect with community members. With seamless Google sign-in and real-time goal management.
 
 
@@ -13,17 +13,10 @@ A community-space where one can manage their goals using an engaging lamp theme,
 - **Story Management**: Add or View member stories with a wordcloud based on content of story.
 - **Responsive Design**: Optimized for both desktop and mobile devices.
 
-
-## Live Demo 🎥
-
-Experience the Web App live by visiting [Live Demo](https://lit-a-lamp.netlify.app/index.html).
-
-
 ## Technologies Used 🔧
 
 - **Frontend**: HTML, CSS, JavaScript, Bootstrap
 - **Backend**: Firebase (Authentication, Firestore)
-- **Deployment**: Netlify
 
 
 ## Getting Started 💻
@@ -32,8 +25,8 @@ Follow these steps to run the App locally:
 
 1. **Clone the Repository 📲**
    ```bash
-   git clone https://github.com/Monika5S/Lit-A-Lamp.git
-   cd Lit-A-Lamp
+   git clone https://github.com/Monika5S/HackBrew-24.git
+   cd HackBrew-24
 
 
 2. **Install Dependencies ⚙️**
@@ -58,7 +51,7 @@ Follow these steps to run the App locally:
     - styles/style.css: CSS file for styling the application.
     - source/firebase/firebaseConfig.js: Firebase configuration and initialization.
     - source/firebase/auth.js: Handles user authentication logic.
-    - source/goals.js: Manages goal-related functionalities and UI updates.
+    - source/goals.js: Manages goal-related functions and UI updates.
     - source/profile.js: Handles display of profile related info.
     - source/reflect.js: Manages Stories updates and wordcloud generation.
 
